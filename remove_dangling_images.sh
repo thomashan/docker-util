@@ -1,3 +1,4 @@
 #!/bin/sh
 
-docker rmi $(docker images -f "dangling=true" -q)
+docker images --quiet --filter=dangling=true | xargs --no-run-if-empty docker rmi
+
